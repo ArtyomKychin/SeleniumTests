@@ -5,7 +5,7 @@
         [Test]
         [Category("Smoke")]
         [Description("SimpleDevide")]
-        
+
         public void SimpleDevide()
         {
             var expected = 2;
@@ -17,7 +17,7 @@
         [Test]
         [Category("Smoke")]
         [Description("DevideByZero")]
-       
+
         public void DevideByZero
             (
             [Random(1, 10, 1)] double operand1,
@@ -31,11 +31,11 @@
             var actual = calculator.Devide(operand1, operand2);
             Assert.That(actual, Is.EqualTo(expected));
         }
-        
+
         [Test]
         [Category("Smoke")]
         [Description("DevideByZeroAndRange")]
-      
+
         public void DevideByZeroAndRange
             (
             [Values(2, 4, 10)] double operand1,

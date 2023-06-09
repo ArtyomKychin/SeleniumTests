@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SeleniumTests.Tests
+﻿namespace SeleniumTests.Tests
 {
     public class Subtraction : BaseTest
     {
@@ -52,7 +46,7 @@ namespace SeleniumTests.Tests
 
             Random rnd = new();
             var actual = calculator.Sub(operand1, operand2);
-            Assert.Multiple(()=>
+            Assert.Multiple(() =>
             {
                 Assert.Negative(actual);
                 //Assert.Positive(actual);

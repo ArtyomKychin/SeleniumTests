@@ -2,7 +2,7 @@
 {
     public class SumTests : BaseTest
     {
-        
+
         [Test]
         [Category("Smoke")]
         [Description("Sum")]
@@ -20,7 +20,7 @@
 
             [Values(1)] double operand1,
             [Random(0, 10, 1)] double operand2)
-        {       
+        {
             var expected = 4;
             var actual = calculator.Add(operand1, operand2);
             Assert.That(actual, Is.EqualTo(expected));

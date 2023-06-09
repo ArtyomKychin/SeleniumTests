@@ -19,7 +19,7 @@ namespace SeleniumTests.Tests
             (
             [Values(0)] double operand1,
             [Random(1, 10, 1)] double operand2
-            )           
+            )
         {
             //operand1 = 0;
             var expected = 0;
@@ -34,7 +34,7 @@ namespace SeleniumTests.Tests
         public void MultiplicationByANegativeNumber(double expected, double operand1, double operand2)
         {
             var actual = calculator.Multiply(operand1, operand2);
-            Assert.That(actual, Is.EqualTo(expected)); 
+            Assert.That(actual, Is.EqualTo(expected));
         }
     }
 }
