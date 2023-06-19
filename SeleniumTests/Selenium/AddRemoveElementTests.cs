@@ -1,12 +1,5 @@
-﻿using NUnit.Framework.Constraints;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumTests.Selenium
 {
@@ -17,6 +10,7 @@ namespace SeleniumTests.Selenium
         public void AddRemoveButton()
         {
             driver.FindElement(By.LinkText("Add/Remove Elements")).Click();
+
             IWebElement addButton = driver.FindElement(By.TagName("button"));
             new Actions(driver).DoubleClick(addButton).Perform();
             List<IWebElement> buttonDelete = driver.FindElements(By.ClassName("added-manually")).ToList();
