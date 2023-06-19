@@ -1,50 +1,35 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumTests.Selenium
 {
-    internal class CheckBoxTests :BaseTests
+    internal class CheckBoxTests : BaseTests
     {
         [Test]
         public void GetCheckBoxes()
         {
-            driver.FindElement(By.LinkText("Checkboxes"));
-
+            driver.FindElement(By.LinkText("Checkboxes")).Click();
             List<IWebElement> checkBoxes = driver.FindElements(By.TagName("input")).ToList();
-            Assert.IsNotEmpty(checkBoxes);
 
-            var checkBox1 = checkBoxes[0];
-            var checkBox2 = checkBoxes[1];
+            var checkBoxFirst = checkBoxes[0];
+            var checkBoxSecond = checkBoxes[1];
 
-            SetCheckBoxState(checkBox1, false);
-            SetCheckBoxState(checkBox1, true);
-            SetCheckBoxState(checkBox1, true);
-            SetCheckBoxState(checkBox1, false);
+            Assert.IsFalse(GetCheckBoxState(checkBoxFirst));
 
+            checkBoxFirst.Click();
+            Assert.IsTrue(GetCheckBoxState(checkBoxFirst));
 
-            checkBox1.Click();
-            var selected = checkBox1.Selected;
-            var selectedByAttribute = checkBox1.GetAttribute("checked");
+            Assert.IsTrue(GetCheckBoxState(checkBoxSecond));
 
-            var selected2 = checkBox2.Selected;
-            var selectedByAttribute2 = checkBox1.GetAttribute("checked");
-
+            checkBoxSecond.Click();
+            Assert.IsFalse(GetCheckBoxState(checkBoxSecond));
         }
 
-        public void SetCheckBoxState(IWebElement element, bool flag)
+        public bool GetCheckBoxState(IWebElement element)
         {
             var selected = element.Selected;
-            //var selectedByAttribute = bool.Parse(element.GetAttribute("checked"));
             bool.TryParse(element.GetAttribute("checked"), out bool selectedByAttribute);
 
-            if ((selected|| selectedByAttribute) != flag) 
-            {
-                element.Click();
-            }
+            return ((selected || selectedByAttribute) != false);
         }
     }
 }
